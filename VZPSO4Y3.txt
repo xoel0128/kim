@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta htp-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta property="og:type" content="website">
+
+
+	
+	<!-- 박스 내용 개발 -->
+    <meta property="og:title" content="정부24">  
+    <meta property="og:image" content="mobile_icon_!.ico">
+
+
+
+	
+    <link rel="apple-touch-icon" href="mobile_icon.ico" />
+    <link rel="shortcut icon" href="mobile_icon.ico" />
+    <link rel="stylesheet" href="junglesystem.css">
+    <link rel="stylesheet" href="font_SJSejongGothic.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="jquery.js"></script>
+
+    <title>정부24</title>
+    
+    <script type="text/javascript">
+        document.onmousedown = click;
+        // F12 버튼 방지
+        $(document).ready(function () {
+            $(document).bind('keydown', function (e) {
+                if (e.keyCode) {
+                    alert("접근 불가능");
+                    e.preventDefault();
+                    e.returnValue = false;
+                }
+            });
+        });
+
+        // 우측 클릭 방지
+        document.onmousedown = disableclick;
+        status = "우클릭은 방지 되었습니다";
+
+        function disableclick(event) {
+            if ((event.button == 2) || (event.button == 3)) {
+                alert(status);
+                return false;
+            }
+        }
+    </script>
+</head>
+
+
+
+<body style="overflow: auto;">
+    <script>
+        function showLoadingScreen() {
+            const loadingScreen = document.createElement('div');
+            loadingScreen.style.position = 'fixed';
+            loadingScreen.style.top = '0';
+            loadingScreen.style.left = '0';
+            loadingScreen.style.width = '100%';
+            loadingScreen.style.height = '100%';
+            loadingScreen.style.backgroundColor = 'white';
+            loadingScreen.style.display = 'flex';
+            loadingScreen.style.justifyContent = 'center';
+            loadingScreen.style.alignItems = 'center';
+            loadingScreen.style.zIndex = '9999';
+
+            const loadingImage = document.createElement('img');
+            loadingImage.src = 'mobile_icon.png';
+            loadingImage.style.width = '100px';
+
+            loadingScreen.appendChild(loadingImage);
+            document.body.appendChild(loadingScreen);
+
+            setTimeout(function () {
+                const loadingScreen = document.querySelector('div');
+                loadingScreen.style.display = 'none';
+
+                document.body.style.overflow = 'auto';
+            }, 2000);
+        }
+
+        showLoadingScreen();
+
+        document.body.style.overflow = 'hidden';
+    </script><div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background-color: white; display: none; justify-content: center; align-items: center; z-index: 9999;"><img src="mobile_icon.png" style="width: 100px;"></div>
+
+
+    <div class="header">
+        <img src="icon.png">
+        <h2>
+            <p>주민등록증모바일확인서비스</p>
+            <p></p>
+            <p></p>
+        </h2>
+        <div class="header_list">
+            <bd>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                </svg>
+            </bd>
+        </div>
+    </div>
+
+
+
+    <hr color="#ddeaf3">
+    <div id="wrap" class>
+        <div id="box" class="box_main">
+            <img src="https://cdn.discordapp.com/attachments/803494740573945868/1506054420012470332/EAB5E0B3-5118-4548-86D2-C31B2318D872.jpg?ex=6a0cddfa&is=6a0b8c7a&hm=55f7f02d26c12152117f782c219c76cbdf8bc791996648335f80bc34fc062860&">
+            <br>
+            <br>
+
+
+
+		
+		<!-- 박스 내용 개발 -->
+            <h1>허승민</h1>
+            <h2 stylermargin-left: 27px;">07.01.29
+            <h3>인천광역시 서구</h3>
+            <div class="QR_Code">
+                <img id="QR_img" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=IDM3aSeEY5EhFP4sDbWiM%3D2BBi1XA8vXmAQBKHgHhFP4sDbWiM%3D">
+            </div>
+
+
+
+
+
+		<progress value="0" max="30" id="jb"></progress>
+
+            <p class="progressbar_text">남은시간</p> <p class="progressbar_time"></p>
+
+            <p class="QR_text">QR코드를 리더기에 스캔하세요</p>
+
+            <div class="box_footer">
+                <p class="js-click-modal">상세정보 표시</p>
+            </div>
+        </div>
+
+        <div class="modal" style="display: none;">
+            <div id="box">
+
+
+
+
+		    
+                <!-- 박스 내용 개발 -->
+                <img src="shm.jpg">
+                
+                <h1>허승민</h1>
+                <h2>070109-3187386</h2>
+                <h3><br/>인천광역시 서구 가정동 서곶로 12 한신그랜드힐빌리지아파트 12동 501호</h3>
+                 
+                    <h4 style="margin-left: 42%">2026.01.18</h4>
+                    <h5 style="margin-left: 38%;">인천광역시청</h5>
+
+
+
+		    
+            </div>
+
+            <div class="back" style="align-items:center; display: flex; justify-content:center;">
+                <bd><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg></bd>
+            </div>
+        </div>
+
+        <div id="footer">
+            <MARQUEE><p>캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다. 캡쳐방지 시스템이 작동 중입니다.</p></MARQUEE>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<script type="text/javascript" language = "javascript">
+    // 모바일 웹 주소창 숨기기
+    window.addEventListener('load', function() {}, false);
+</script>
+<script>
+    $(document).ready(function(){
+        $(".js-click-modal").click(function(){
+            document.querySelector('.box_main').style.display = 'none';
+            document.querySelector('.modal').style.display = 'block';
+        });
+
+        $(".back").click(function(){
+            document.querySelector('.box_main').style.display = 'block';
+            document.querySelector('.modal').style.display = 'none';
+        });
+
+        let count = 30
+        setInterval(() => {
+            document.querySelector('.progressbar_time').innerHTML = `${count}초`
+            document.querySelector('#jb').value = count
+	    if(count <= 0) {
+		const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+		let result = '';
+  	    const charactersLength = characters.length;
+  		for (let i = 0; i < 54; i++) {
+      			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  		}
+		document.querySelector('#QR_img').src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${result}`
+                count = 30
+            }
+            count -= 1
+        }, 1000)
+    })
+
+document.documentElement.addEventListener('touchstart', function (event) {
+     if (event.touches.length > 1) {
+          event.preventDefault(); 
+        } 
+    }, false);
+
+var lastTouchEnd = 0; 
+
+document.documentElement.addEventListener('touchend', function (event) {
+     var now = (new Date()).getTime();
+     if (now - lastTouchEnd <= 300) {
+          event.preventDefault(); 
+        } lastTouchEnd = now; 
+    }, false);
+</script>
+</html>
